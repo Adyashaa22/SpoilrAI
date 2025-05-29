@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SpoilrAI - Movie & TV Show Spoiler Bot</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>SpoilrAI</h1>
+        <p>Ask spoiler questions about your favorite movies and TV shows</p>
+    </header>
+
+    <div class="container">
+        <div class="chat-container">
+            <div class="messages" id="messages">
+                <div class="message bot-message">
+                    Welcome to SpoilrAI! Ask me specific spoiler questions about movies or TV shows like "Does Jack die in Titanic?" or "What happens at the end of The Sixth Sense?"
+                </div>
+            </div>
+
+            <form class="chat-form" id="chatForm">
+                <div class="form-group">
+                    <label for="movieInput">Movie or TV Show</label>
+                    <div style="position: relative;">
+                        <input type="text" id="movieInput" placeholder="e.g. Titanic, The Matrix, Game of Thrones" required>
+                        <div class="suggestions hidden" id="suggestions"></div>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="questionInput">Your Spoiler Question</label>
+                    <textarea id="questionInput" rows="3" placeholder="e.g. Does Jack die? What happens in the red wedding? How does the show end?" required></textarea>
+                </div>
+                
+                <div class="spoiler-warning">
+                    <input type="checkbox" id="showWarning" checked>
+                    <label for="showWarning">Show spoiler warning before answers</label>
+                </div>
+                
+                <button type="submit" id="submitButton">Ask Question</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Spoiler warning modal -->
+    <div class="warning-modal hidden" id="warningModal">
+        <div class="warning-content">
+            <h2>⚠️ Spoiler Alert ⚠️</h2>
+            <p>The answer contains major plot spoilers. Are you sure you want to continue?</p>
+            <div class="warning-buttons">
+                <button id="cancelButton" class="cancel">Cancel</button>
+                <button id="showAnswer">Show Spoiler</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/app.js') }}"></script>
+</body>
+</html>
